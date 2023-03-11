@@ -1,8 +1,8 @@
-.App {
+body {
   margin: 1%;
 }
 
-.usernamelabel {
-  padding: 10px
+.namelabel {
+  margin: 10px
 }
 

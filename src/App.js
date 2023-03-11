@@ -13,8 +13,8 @@ function App() {
   return (
     <div className="App">
     <h1>Instagram Account Information</h1>
-    <label htmlFor="username" className="usernamelabel">Username:</label>
-    <input type="text" id="username" name="username"></input>
+    <label htmlFor="name" className="namelabel">Name:</label>
+    <input type="text" id="name" name="name"></input>
     <hr></hr>
     {/* component instantation */}
      <UserList />
