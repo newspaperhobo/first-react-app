@@ -1,36 +1,35 @@
+// import `useState` from react
+import { useState } from 'react';
 import './App.css';
-import { UserList } from './components/UserList';
-
-
+import { UserItem } from './User/UserItem';
+import { UserForm } from './User/UserForm';
 
 function App() {
-  // P3 - Move the “users” array inside the App component.
-  // P1 & P2 - Inside the App() functions, define an array of objects named "list" 
+  // create a new state and its setter function. This state will keep the value of the user input via input field. The value will represent a username.
+  // Initial value of the state is an empty string
+  const [userName, setUserName] = useState("");
   const userArray = [
-  // P1 & P2 - Make sure this array has at least two objects with the following fields: id(number), name (string), location(string), followers(number), following(number)
   { id: 1, name: "Kira", location: "Boston, MA", followers: 457, following: 997 },
   { id: 2, name: "Sonia", location: "Worcester, MA", followers: 229, following: 1295 },
   { id: 3, name: "Heidi", location: "Roslindale, MA", followers: 107, following: 194 },
   ]
-  // P3 - Create a new handler function. For naming convention, start with the word “handle”
-  // P3 - Include a parameter. e.target.value grabs text field input value
-  const handleInputChange = (e) => {
-    // P3 - In the function body, console log the parameter.
-    console.log(e.target.value);
+  // In the `handleUserNameChange` function, after the console log. set the state that will hold the user name to the value entered into the field. (Hint: event.target.value)
+  const handleUserNameChange = (e) => {
+    // console.log(e.target.value);
+    setUserName(e.target.value);
   }
 
   return (
     <div className="App">
       <h1>Instagram Account Information</h1>
-      <label htmlFor="name" className="namelabel">
-        Name:
-      </label>
-      {/* P3 - Attach this parameter to input’s on change event */}
-      <input type="text" id="name" name="name" onChange={handleInputChange} />
-      <hr></hr>
-      {/* P1 & P2 - component instantation */}
-      {/* P3 - Use props to pass this array into the UserItem component */}
-      <UserList userArray={userArray} />
+      {/* In the App.js file, Pass two props to UserForm component: 
+      `userName`
+      `handleUserNameChange` */}
+      <UserForm
+        handleUserNameChange={handleUserNameChange}
+        userName={userName}
+      />
+      <UserItem userArray={userArray} />
     </div>
   );
 
